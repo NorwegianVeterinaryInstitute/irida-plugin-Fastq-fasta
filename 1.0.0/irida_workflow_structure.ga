@@ -1,0 +1,152 @@
+{
+  "a_galaxy_workflow" : "true",
+  "annotation" : "The pipeline gets FastQ as input and returns basic statistics about the fastq files",
+  "format-version" : "0.1",
+  "name" : "FastQToFastaStats",
+  "steps" : {
+    "0" : {
+      "workflow_outputs" : [ {
+        "label" : null,
+        "output_name" : "output",
+        "uuid" : "8e4e3dd1-b47f-4e2d-8d1b-d58053218c86"
+      } ],
+      "input_connections" : { },
+      "label" : null,
+      "id" : 0,
+      "tool_state" : "{\"optional\": false, \"collection_type\": \"list\"}",
+      "errors" : null,
+      "position" : {
+        "bottom" : 199,
+        "height" : 81,
+        "left" : 131,
+        "right" : 331,
+        "top" : 118,
+        "width" : 200,
+        "x" : 131,
+        "y" : 118
+      },
+      "name" : "Input dataset collection",
+      "uuid" : "5f8bf41a-c7c2-4f48-91f2-62344ac69f0e",
+      "outputs" : [ ],
+      "type" : "data_collection_input",
+      "tool_version" : null,
+      "annotation" : "",
+      "inputs" : [ ],
+      "content_id" : null,
+      "tool_id" : null
+    },
+    "1" : {
+      "workflow_outputs" : [ {
+        "label" : null,
+        "output_name" : "output",
+        "uuid" : "3753deda-6d7d-4702-adfb-4d985b3fbed0"
+      } ],
+      "input_connections" : {
+        "input" : {
+          "id" : 0,
+          "output_name" : "output"
+        }
+      },
+      "label" : null,
+      "id" : 1,
+      "tool_state" : "{\"RENAMESEQ\": \"-r\", \"SKIPN\": \"\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+      "errors" : null,
+      "position" : {
+        "bottom" : 301,
+        "height" : 92,
+        "left" : 411,
+        "right" : 611,
+        "top" : 209,
+        "width" : 200,
+        "x" : 411,
+        "y" : 209
+      },
+      "name" : "FASTQ to FASTA",
+      "uuid" : "e129096d-e338-4f56-8fb2-98792bf1b6fe",
+      "outputs" : [ {
+        "name" : "output",
+        "type" : "fasta"
+      } ],
+      "tool_shed_repository" : {
+        "changeset_revision" : "e282bc27be9a",
+        "name" : "fastq_to_fasta",
+        "owner" : "devteam",
+        "tool_shed" : "toolshed.g2.bx.psu.edu"
+      },
+      "type" : "tool",
+      "tool_version" : "1.0.2",
+      "annotation" : "",
+      "inputs" : [ ],
+      "post_job_actions" : { },
+      "content_id" : "toolshed.g2.bx.psu.edu/repos/devteam/fastq_to_fasta/cshl_fastq_to_fasta/1.0.2",
+      "tool_id" : "toolshed.g2.bx.psu.edu/repos/devteam/fastq_to_fasta/cshl_fastq_to_fasta/1.0.2"
+    },
+    "2" : {
+      "workflow_outputs" : [ {
+        "label" : "Fasta Statistics on input dataset(s): Fasta summary stats",
+        "output_name" : "stats",
+        "uuid" : "0e7e3a4e-3ae8-4acb-9c88-77a815147d97"
+      } ],
+      "input_connections" : {
+        "dataset" : {
+          "id" : 1,
+          "output_name" : "output"
+        }
+      },
+      "label" : null,
+      "id" : 2,
+      "tool_state" : "{\"dataset\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+      "errors" : null,
+      "position" : {
+        "bottom" : 413,
+        "height" : 132,
+        "left" : 857,
+        "right" : 1057,
+        "top" : 281,
+        "width" : 200,
+        "x" : 857,
+        "y" : 281
+      },
+      "name" : "Fasta Statistics",
+      "uuid" : "acbd5514-c005-479b-b009-26a6eebe89a8",
+      "outputs" : [ {
+        "name" : "stats",
+        "type" : "tabular"
+      } ],
+      "tool_shed_repository" : {
+        "changeset_revision" : "9c620a950d3a",
+        "name" : "fasta_stats",
+        "owner" : "iuc",
+        "tool_shed" : "toolshed.g2.bx.psu.edu"
+      },
+      "type" : "tool",
+      "tool_version" : "1.0.1",
+      "annotation" : "",
+      "inputs" : [ {
+        "description" : "runtime parameter for tool Fasta Statistics",
+        "name" : "dataset"
+      } ],
+      "post_job_actions" : {
+        "ChangeDatatypeActionstats" : {
+          "action_arguments" : {
+            "newtype" : "csv"
+          },
+          "action_type" : "ChangeDatatypeAction",
+          "output_name" : "stats"
+        },
+        "RenameDatasetActionstats" : {
+          "action_arguments" : {
+            "newname" : "fasta_stats.csv"
+          },
+          "action_type" : "RenameDatasetAction",
+          "output_name" : "stats"
+        }
+      },
+      "content_id" : "toolshed.g2.bx.psu.edu/repos/iuc/fasta_stats/fasta-stats/1.0.1",
+      "tool_id" : "toolshed.g2.bx.psu.edu/repos/iuc/fasta_stats/fasta-stats/1.0.1"
+    }
+  },
+  "tags" : [ ],
+  "uuid" : "9d80b9e9-b071-41c7-9782-de3f9a340273",
+  "version" : 7
+}

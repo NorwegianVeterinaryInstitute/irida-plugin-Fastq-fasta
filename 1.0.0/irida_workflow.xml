@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<iridaWorkflow>
+  <id>be9afe70-dc80-403d-bf50-b42b67de496c</id>
+  <name>ReadInfo</name>
+  <version>1.0.0</version>
+  <analysisType>READ_INFO</analysisType>
+  <inputs>
+    <requiresSingleSample>true</requiresSingleSample>
+  </inputs>
+  <parameters>
+    <parameter name="fastq_to_fasta-1-RENAMESEQ" defaultValue="-r">
+      <toolParameter toolId="e129096d-e338-4f56-8fb2-98792bf1b6fe" parameterName="RENAMESEQ"/>
+    </parameter>
+    <parameter name="fastq_to_fasta-1-SKIPN" defaultValue="">
+      <toolParameter toolId="e129096d-e338-4f56-8fb2-98792bf1b6fe" parameterName="SKIPN"/>
+    </parameter>
+  </parameters>
+  <outputs>
+    <output name="fasta_stats.csv" fileName="fasta_stats.csv"/>
+  </outputs>
+  <toolRepositories>
+    <repository>
+      <name>fastq_to_fasta</name>
+      <owner>devteam</owner>
+      <url>https://toolshed.g2.bx.psu.edu</url>
+      <revision>e282bc27be9a</revision>
+    </repository>
+    <repository>
+      <name>fasta_stats</name>
+      <owner>iuc</owner>
+      <url>https://toolshed.g2.bx.psu.edu</url>
+      <revision>9c620a950d3a</revision>
+    </repository>
+  </toolRepositories>
+</iridaWorkflow>
